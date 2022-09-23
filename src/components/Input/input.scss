@@ -1,0 +1,39 @@
+.inputAndLevelContainer {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	padding: 1em 0 1em 0;
+}
+.label {
+	display: flex;
+	padding-right: 1em;
+	align-items: center;
+	justify-content: left;
+	font-size: 24px;
+}
+
+.inputContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+.input {
+	border: 2px solid black;
+
+	border-radius: 1em;
+	padding: 0.5em;
+	font-size: 24px;
+	width: 400px;
+}
+
+.errorSpan {
+	position: absolute;
+	width: 100%;
+	padding-left: 1em;
+	text-align: left;
+	bottom: -1.5em;
+	font-size: 16px;
+	padding: 1 em;
+	color: red;
+}

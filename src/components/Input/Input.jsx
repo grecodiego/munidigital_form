@@ -1,32 +1,45 @@
+import { Fragment, useState } from 'react'
+import './input.scss'
+import { validateField } from '../../utils/validate'
+
 export const Input = ({
 	data,
 	setData,
+	formValidState,
+	setFormValidState,
+	errorMessage,
 	label,
 	type,
 	name,
 	value,
 	placeholder,
+	required,
 }) => {
-	const handleOnchange = (value) => {
-		console.log('value', value)
-		let newValue = { [name]: value }
-		console.log('newValue', newValue)
-		let newData = { ...data, ...newValue }
-		console.log('newData', newData)
-		setData(newData)
+	const [valid, setValid] = useState(false)
+
+	const handleOnchange = (value, name) => {
+		validateField(name, value, setValid, formValidState, setFormValidState)
+		setData({ ...data, [name]: value })
+		console.log(valid)
 	}
 	return (
-		<div>
-			<label>{label}</label>
-			<input
-				type={type}
-				name={name}
-				id={name}
-				className='input'
-				value={value}
-				onChange={(e) => handleOnchange(e.target.value)}
-				placeholder={placeholder}
-			/>
-		</div>
+		<Fragment>
+			<div className='inputAndLevelContainer'>
+				<label className='label'>{label}</label>
+				<div className='inputContainer'>
+					<input
+						className='input'
+						id={name}
+						name={name}
+						onChange={(e) => handleOnchange(e.target.value, name)}
+						placeholder={placeholder}
+						type={type}
+						value={value}
+						required={required}
+					/>
+					{!valid && <span className='errorSpan'>{errorMessage}</span>}
+				</div>
+			</div>
+		</Fragment>
 	)
 }

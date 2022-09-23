@@ -1,0 +1,19 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	padding: 2em;
+	height: fit-content;
+	background-color: white;
+	border-radius: 1em;
+}
+
+.formDownloadButton {
+	border: 2px solid black;
+	border-radius: 1em;
+	margin-top: 1em;
+	padding: 1em 2em 1em 2em;
+	font-size: 24px;
+	background-color: rgba(0, 0, 255, 0.279);
+}
