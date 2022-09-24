@@ -17,7 +17,7 @@ export const Form = () => {
 	return (
 		<Fragment>
 			<form className='form'>
-				<h1>MuniDigital form Challenge!</h1>
+				<h1 className='title'>MuniDigital form Challenge!</h1>
 				{formInputs.map((formInput) => {
 					return (
 						<Input

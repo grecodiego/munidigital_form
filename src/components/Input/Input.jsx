@@ -16,11 +16,14 @@ export const Input = ({
 	required,
 }) => {
 	const [valid, setValid] = useState(false)
-
+	let alreadyWrite = false
 	const handleOnchange = (value, name) => {
 		validateField(name, value, setValid, formValidState, setFormValidState)
 		setData({ ...data, [name]: value })
-		console.log(valid)
+	}
+
+	if (value.length > 0) {
+		alreadyWrite = true
 	}
 	return (
 		<Fragment>
@@ -37,7 +40,9 @@ export const Input = ({
 						value={value}
 						required={required}
 					/>
-					{!valid && <span className='errorSpan'>{errorMessage}</span>}
+					{alreadyWrite
+						? !valid && <span className='errorSpan'>{errorMessage}</span>
+						: null}
 				</div>
 			</div>
 		</Fragment>

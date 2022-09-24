@@ -19,12 +19,13 @@
 	position: relative;
 }
 .input {
-	border: 2px solid black;
-
-	border-radius: 1em;
+	border: none;
+	background-color: rgb(255, 255, 255);
+	border-radius: 0.3em;
 	padding: 0.5em;
 	font-size: 24px;
-	width: 400px;
+	font-family: 'Lato', sans-serif;
+	width: 600px;
 }
 
 .errorSpan {
@@ -34,6 +35,7 @@
 	text-align: left;
 	bottom: -1.5em;
 	font-size: 16px;
+	font-weight: bold;
 	padding: 1 em;
-	color: red;
+	color: yellow;
 }
