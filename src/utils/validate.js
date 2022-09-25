@@ -7,7 +7,7 @@ export function validateField({
 	validateType,
 	value,
 }) {
-	function checkCondition({ condition, name }) {
+	function checkCondition({ condition = true, name }) {
 		if (condition) {
 			setInputValidState(true)
 			setFormValidState({ ...formValidState, [name]: true })
@@ -24,13 +24,6 @@ export function validateField({
 				name: name,
 			})
 			break
-		case 'address':
-			checkCondition({
-				condition:
-					value.length >= validateQuanty && /^[0-9a-zA-Z]+$/.test(value),
-				name: name,
-			})
-			break
 		case 'email':
 			checkCondition({
 				condition: value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i),
@@ -44,8 +37,10 @@ export function validateField({
 			})
 			break
 		case 'any':
-			setInputValidState(true)
-			setFormValidState({ ...formValidState, [name]: true })
+			checkCondition({
+				condition: value.length >= validateQuanty,
+				name: name,
+			})
 			break
 		default:
 			break
