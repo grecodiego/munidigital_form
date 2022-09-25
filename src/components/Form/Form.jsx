@@ -14,7 +14,7 @@ export const Form = () => {
 
 	const arrayOfValidState = Object.values(formValidState)
 	const enableButton = arrayOfValidState.every((v) => v === true)
-	console.log(formValidState)
+
 	return (
 		<Fragment>
 			<form className='form'>

@@ -8,14 +8,10 @@ export function validateField({
 	value,
 }) {
 	function checkCondition({ condition, name }) {
-		console.log('hola')
-		console.log('name', name)
 		if (condition) {
-			console.log('true')
 			setInputValidState(true)
 			setFormValidState({ ...formValidState, [name]: true })
 		} else {
-			console.log('false')
 			setInputValidState(false)
 			setFormValidState({ ...formValidState, [name]: false })
 		}
