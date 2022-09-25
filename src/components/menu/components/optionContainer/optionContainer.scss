@@ -1,0 +1,32 @@
+@import '../../../../themes/colors.scss';
+
+.optionContainer {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	align-items: center;
+	background: transparent;
+	border: none;
+	justify-content: space-between;
+	padding: 1em 0 1em 0;
+}
+
+.optionContainerChoosen {
+	margin-left: 1em;
+}
+.option {
+	color: $color-terciary;
+	font-size: 16px;
+	font-weight: normal;
+
+	:hover {
+		color: violet;
+		font-weight: 1000;
+	}
+
+	cursor: default;
+}
+
+.optionChoosen {
+	font-weight: bold;
+}

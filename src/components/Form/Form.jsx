@@ -1,8 +1,9 @@
 import { Fragment, useState } from 'react'
-import { Input } from '../Input/input'
+import { Input } from '../input/input'
 import { formInputs, fields, fieldsToValidate } from '../../formImputs'
 import './form.scss'
 import ReactExport from 'react-export-excel'
+import { Button } from '../button/button'
 
 const ExcelFile = ReactExport.ExcelFile
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet
@@ -14,6 +15,8 @@ export const Form = () => {
 
 	const arrayOfValidState = Object.values(formValidState)
 	const enableButton = arrayOfValidState.every((v) => v === true)
+	console.log(arrayOfValidState, 'arrayOfValidState')
+	console.log(enableButton, 'enableButton22')
 	return (
 		<Fragment>
 			<form className='form'>
@@ -40,11 +43,7 @@ export const Form = () => {
 					)
 				})}
 				<ExcelFile
-					element={
-						<button className='formDownloadButton' disabled={!enableButton}>
-							Download Data
-						</button>
-					}
+					element={<Button disabled={!enableButton}>Download Data</Button>}
 					filename='personData'>
 					<ExcelSheet data={[data]} name='personData'>
 						{formInputs.map((field) => {

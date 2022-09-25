@@ -1,0 +1,56 @@
+@import '../../themes/colors.scss';
+
+.styledMenu {
+	display: flex;
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	height: 40px;
+	width: 40px;
+	padding: 6px;
+	flex-direction: column;
+	background-color: transparent;
+	border: 2px;
+	cursor: pointer;
+	justify-content: space-between;
+	&:focus {
+		outline: none;
+	}
+}
+
+.defaultLine {
+	position: relative;
+	height: 4px;
+	width: 40px;
+	background: $color-primaryColor;
+	transform-origin: 2px;
+	transform: rotate(0);
+	transition: all 1s linear;
+}
+
+.openTopLine {
+	transform: rotate(45deg);
+}
+.closeTopLine {
+	transform: rotate(0);
+}
+
+.midLine {
+	width: 38px;
+}
+
+.openMidLine {
+	opacity: 0;
+	transform: translateX(20px, 0);
+}
+.closeMidLine {
+	opacity: 1;
+}
+
+.openBottomLine {
+	transform: rotate(-45deg);
+}
+.closeBottomLine {
+	width: 38px;
+	transform: rotate(0);
+}

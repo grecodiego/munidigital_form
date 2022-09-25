@@ -1,0 +1,16 @@
+@import '../../themes/colors.scss';
+
+.button {
+	border: none;
+	border-radius: 1em;
+	margin-top: 1em;
+	padding: 1em 2em 1em 2em;
+	font-size: 24px;
+	color: $color-white;
+	font-weight: bold;
+	background-color: $color-secondaryColor;
+}
+.disabled {
+	background-color: $color-disable;
+	color: $color-disableFont;
+}

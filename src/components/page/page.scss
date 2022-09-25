@@ -1,11 +1,11 @@
-@import './themes/colors.scss';
+@import '../../themes/colors.scss';
 
-.App {
+.page {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
 	min-height: 100vh;
-	background-image: url('./assets/images/png/background.png');
+	background-image: url('../../assets/images/png/background.png');
 	background-size: cover;
 }
