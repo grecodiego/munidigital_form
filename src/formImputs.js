@@ -24,7 +24,7 @@ export const formInputs = [
 		type: 'text',
 		name: 'address',
 		placeholder: 'Ingrese su dirección',
-		validateType: 'letters',
+		validateType: 'any',
 		validateQuanty: 4,
 		errorMessage: 'La dirección debe tener al menos 4 caracteres',
 	},
