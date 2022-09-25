@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react'
-import { Input } from '../Input/input'
+import { Input } from '../input/input'
 import { formInputs, fields, fieldsToValidate } from '../../formImputs'
 import './form.scss'
 import ReactExport from 'react-export-excel'
