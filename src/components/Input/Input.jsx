@@ -1,32 +1,61 @@
+import { Fragment, useState } from 'react'
+import './input.scss'
+import { validateField } from '../../utils/validate'
+
 export const Input = ({
 	data,
-	setData,
+	errorMessage,
+	formValidState,
 	label,
-	type,
 	name,
-	value,
 	placeholder,
+	required,
+	setData,
+	setFormValidState,
+	type,
+	validateQuanty,
+	validateType,
+	value,
 }) => {
-	const handleOnchange = (value) => {
-		console.log('value', value)
-		let newValue = { [name]: value }
-		console.log('newValue', newValue)
-		let newData = { ...data, ...newValue }
-		console.log('newData', newData)
-		setData(newData)
+	const [valid, setValid] = useState(false)
+	let alreadyWrite = false
+
+	const handleOnchange = (value, name) => {
+		validateField({
+			formValidState: formValidState,
+			name: name,
+			setFormValidState: setFormValidState,
+			setInputValidState: setValid,
+			validateQuanty: validateQuanty,
+			validateType: validateType,
+			value: value,
+		})
+		setData({ ...data, [name]: value })
+	}
+
+	if (value.length > 0) {
+		alreadyWrite = true
 	}
 	return (
-		<div>
-			<label>{label}</label>
-			<input
-				type={type}
-				name={name}
-				id={name}
-				className='input'
-				value={value}
-				onChange={(e) => handleOnchange(e.target.value)}
-				placeholder={placeholder}
-			/>
-		</div>
+		<Fragment>
+			<div className='inputAndLevelContainer'>
+				<label className='label'>{label}</label>
+				<div className='inputContainer'>
+					<input
+						className='input'
+						id={name}
+						name={name}
+						onChange={(e) => handleOnchange(e.target.value, name)}
+						placeholder={placeholder}
+						type={type}
+						value={value}
+						required={required}
+					/>
+					{alreadyWrite
+						? !valid && <span className='errorSpan'>{errorMessage}</span>
+						: null}
+				</div>
+			</div>
+		</Fragment>
 	)
 }

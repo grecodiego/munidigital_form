@@ -1,0 +1,33 @@
+@import '../../themes/colors.scss';
+
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	padding: 2em;
+	height: fit-content;
+	background-color: $color-primaryColor;
+	border-radius: 1em;
+	font-family: 'Lato', sans-serif;
+	color: $color-white;
+}
+
+.title {
+	margin-bottom: 1em;
+}
+.formDownloadButton {
+	border: none;
+	border-radius: 1em;
+	margin-top: 1em;
+	padding: 1em 2em 1em 2em;
+	font-size: 24px;
+	color: $color-white;
+	font-weight: bold;
+	background-color: $color-secondaryColor;
+}
+
+.formDownloadButton[disabled] {
+	background-color: $color-disable;
+	color: $color-disableFont;
+}

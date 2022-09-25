@@ -1,0 +1,43 @@
+@import '../../themes/colors.scss';
+
+.inputAndLevelContainer {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	padding: 1em 0 1em 0;
+}
+.label {
+	display: flex;
+	padding-right: 1em;
+	align-items: center;
+	justify-content: left;
+	font-size: 24px;
+}
+
+.inputContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+.input {
+	border: none;
+	background-color: $color-white;
+	border-radius: 0.3em;
+	padding: 0.5em;
+	font-size: 24px;
+	font-family: 'Lato', sans-serif;
+	width: 600px;
+}
+
+.errorSpan {
+	position: absolute;
+	width: 100%;
+	padding-left: 1em;
+	text-align: left;
+	bottom: -1.5em;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 1 em;
+	color: $color-errorMessage;
+}
