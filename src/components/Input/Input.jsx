@@ -4,21 +4,32 @@ import { validateField } from '../../utils/validate'
 
 export const Input = ({
 	data,
-	setData,
-	formValidState,
-	setFormValidState,
 	errorMessage,
+	formValidState,
 	label,
-	type,
 	name,
-	value,
 	placeholder,
 	required,
+	setData,
+	setFormValidState,
+	type,
+	validateQuanty,
+	validateType,
+	value,
 }) => {
 	const [valid, setValid] = useState(false)
 	let alreadyWrite = false
+
 	const handleOnchange = (value, name) => {
-		validateField(name, value, setValid, formValidState, setFormValidState)
+		validateField({
+			formValidState: formValidState,
+			name: name,
+			setFormValidState: setFormValidState,
+			setInputValidState: setValid,
+			validateQuanty: validateQuanty,
+			validateType: validateType,
+			value: value,
+		})
 		setData({ ...data, [name]: value })
 	}
 

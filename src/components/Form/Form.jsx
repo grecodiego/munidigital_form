@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react'
 import { Input } from '../Input/input'
 import { formInputs, fields, fieldsToValidate } from '../../formImputs'
-import './form.css'
+import './form.scss'
 import ReactExport from 'react-export-excel'
 
 const ExcelFile = ReactExport.ExcelFile
@@ -34,6 +34,8 @@ export const Form = () => {
 							required={formInput.required}
 							errorMessage={formInput.errorMessage}
 							pattern={formInput.pattern}
+							validateType={formInput.validateType}
+							validateQuanty={formInput.validateQuanty}
 						/>
 					)
 				})}

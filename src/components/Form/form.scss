@@ -1,3 +1,5 @@
+@import '../../themes/colors.scss';
+
 .form {
 	display: flex;
 	flex-direction: column;
@@ -5,10 +7,10 @@
 	justify-content: space-around;
 	padding: 2em;
 	height: fit-content;
-	background-color: #187473;
+	background-color: $color-primaryColor;
 	border-radius: 1em;
 	font-family: 'Lato', sans-serif;
-	color: white;
+	color: $color-white;
 }
 
 .title {
@@ -20,12 +22,12 @@
 	margin-top: 1em;
 	padding: 1em 2em 1em 2em;
 	font-size: 24px;
-	color: white;
+	color: $color-white;
 	font-weight: bold;
-	background-color: #e26823;
+	background-color: $color-secondaryColor;
 }
 
 .formDownloadButton[disabled] {
-	background-color: #cccccc;
-	color: #666666;
+	background-color: $color-disable;
+	color: $color-disableFont;
 }

@@ -1,40 +1,54 @@
-export function validateField(
-	fieldName,
-	value,
-	setInputValidState,
+export function validateField({
 	formValidState,
-	setFormValidState
-) {
-	function checkCondition(condition, fieldName) {
+	name,
+	setFormValidState,
+	setInputValidState,
+	validateQuanty = 99999,
+	validateType,
+	value,
+}) {
+	function checkCondition(condition, name) {
 		if (condition) {
 			setInputValidState(true)
-			setFormValidState({ ...formValidState, [fieldName]: true })
+			setFormValidState({ ...formValidState, [name]: true })
 		} else {
 			setInputValidState(false)
-			setFormValidState({ ...formValidState, [fieldName]: false })
+			setFormValidState({ ...formValidState, [name]: false })
 		}
 	}
-	switch (fieldName) {
-		case 'firstName':
-			checkCondition(value.length > 1 && /^[a-zA-Z]+$/.test(value), fieldName)
-			break
-		case 'lastName':
-			checkCondition(value.length > 1 && /^[a-zA-Z]+$/.test(value), fieldName)
+
+	switch (validateType) {
+		case 'letters':
+			checkCondition(
+				value.length >= validateQuanty && /^[a-zA-Z]+$/.test(value),
+				validateType,
+				name
+			)
 			break
 		case 'address':
 			checkCondition(
-				value.length > 3 && /^[0-9a-zA-Z]+$/.test(value),
-				fieldName
+				value.length >= validateQuanty && /^[0-9a-zA-Z]+$/.test(value),
+				validateType,
+				name
 			)
 			break
 		case 'email':
 			checkCondition(
 				value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i),
-				fieldName
+				validateType,
+				name
 			)
 			break
-		case 'phone':
-			checkCondition(value.length > 6 && /^[0-9]+$/.test(value), fieldName)
+		case 'numbers':
+			checkCondition(
+				value.length >= validateQuanty && /^[0-9]+$/.test(value),
+				validateType,
+				name
+			)
+			break
+		case 'any':
+			setInputValidState(true)
+			setFormValidState({ ...formValidState, [name]: true })
 			break
 		default:
 			break
