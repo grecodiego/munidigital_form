@@ -1,7 +1,24 @@
-import { formInputs } from '../../formImputs'
+import { DefaultFormInputs } from '../../formImputs'
 import './inputList.scss'
+import { useNavigate } from 'react-router-dom'
 
 export const InputList = () => {
+	const navigate = useNavigate()
+	const formInputs =
+		JSON.parse(localStorage.getItem('formInputs')) || DefaultFormInputs
+
+	const handleDelClick = async (formInput) => {
+		const index = formInputs.indexOf(formInput)
+		formInputs.splice(index, 1)
+		try {
+			console.log(JSON.stringify(formInputs))
+			await localStorage.setItem('formInputs', JSON.stringify(formInputs))
+			navigate('/admin-panel')
+		} catch (err) {
+			alert(err)
+		}
+	}
+
 	return (
 		<div className='inputList'>
 			<header className='headerList'>
@@ -34,11 +51,14 @@ export const InputList = () => {
 							<th className=''>
 								<div className=''>Error Message</div>
 							</th>
+							<th className=''>
+								<div className=''>Delete Input</div>
+							</th>
 						</tr>
 					</thead>
 					{/* Table body */}
 					<tbody className=''>
-						{formInputs.map((formInput) => {
+						{formInputs.map((formInput, i) => {
 							return (
 								<tr key={formInput.name}>
 									<td className=''>
@@ -76,6 +96,15 @@ export const InputList = () => {
 									<td className=''>
 										<div className=''>
 											<div className=''>{formInput.errorMessage}</div>
+										</div>
+									</td>
+									<td className=''>
+										<div className=''>
+											<div className=''>
+												<button onClick={() => handleDelClick(formInput)}>
+													Delete
+												</button>
+											</div>
 										</div>
 									</td>
 								</tr>

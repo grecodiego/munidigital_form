@@ -1,8 +1,11 @@
 import { Form } from '../../components/form/form'
 import { Page } from '../../components/page/page'
-import { formInputs } from '../../formImputs'
+import { DefaultFormInputs } from '../../formImputs'
 
 export const Home = () => {
+	const formInputs =
+		JSON.parse(localStorage.getItem('formInputs')) || DefaultFormInputs
+
 	console.log(formInputs)
 	return (
 		<Page>

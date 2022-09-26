@@ -1,17 +1,28 @@
 import { Page } from '../../components/page/page'
 import { Form } from '../../components/form/form'
 import { addInputs } from './addInputs'
-import { formInputs } from '../../formImputs'
+import { DefaultFormInputs } from '../../formImputs'
 import { useNavigate } from 'react-router-dom'
 
 export const AddInput = () => {
 	const navigate = useNavigate()
 
-	const handleClickButton = ({ e, path, data }) => {
+	const formInputs =
+		JSON.parse(localStorage.getItem('formInputs')) || DefaultFormInputs
+
+	const handleClickButton = async ({ e, path, data }) => {
 		e.preventDefault()
 		formInputs.push({
 			...data,
 		})
+
+		try {
+			console.log(JSON.stringify(formInputs))
+			await localStorage.setItem('formInputs', JSON.stringify(formInputs))
+			navigate('/admin-panel')
+		} catch (err) {
+			alert(err)
+		}
 		navigate(path)
 	}
 	return (

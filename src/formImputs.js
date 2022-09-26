@@ -1,4 +1,4 @@
-export const formInputs = [
+export const DefaultFormInputs = [
 	{
 		label: 'Nombre',
 		type: 'text',
