@@ -47,31 +47,3 @@ export const formInputs = [
 		errorMessage: 'El número de teléfono debe contener más de 6 dígitos ',
 	},
 ]
-/*
-formInputs.push({
-	label: 'sexo',
-	type: 'text',
-	name: 'sex',
-	placeholder: 'Ingrese su sexo',
-	errorMessage: 'value.length >= 2',
-	pattern: 'john',
-})
-*/
-function convertToObj(a) {
-	let obj = {}
-	a.forEach((k) => {
-		obj[k.name] = ''
-	})
-	return obj
-}
-
-function convertToObjWithBoolean(a) {
-	let obj = {}
-	a.forEach((k) => {
-		obj[k.name] = false
-	})
-	return obj
-}
-export const fieldsToValidate = convertToObjWithBoolean(formInputs)
-export const fields = convertToObj(formInputs)
-export const fieldsErrors = convertToObj(formInputs)

@@ -2,11 +2,8 @@
 
 .styledMenu {
 	display: flex;
-	position: absolute;
-	top: 10px;
-	right: 20px;
-	height: 40px;
-	width: 40px;
+	height: 41px;
+	width: 41px;
 	padding: 6px;
 	flex-direction: column;
 	background-color: transparent;
@@ -35,10 +32,6 @@
 	transform: rotate(0);
 }
 
-.midLine {
-	width: 38px;
-}
-
 .openMidLine {
 	opacity: 0;
 	transform: translateX(20px, 0);
@@ -51,6 +44,5 @@
 	transform: rotate(-45deg);
 }
 .closeBottomLine {
-	width: 38px;
 	transform: rotate(0);
 }

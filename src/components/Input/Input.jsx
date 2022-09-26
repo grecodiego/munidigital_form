@@ -8,6 +8,7 @@ export const Input = ({
 	formValidState,
 	label,
 	name,
+	options = [],
 	placeholder,
 	required,
 	setData,
@@ -41,16 +42,32 @@ export const Input = ({
 			<div className='inputAndLevelContainer'>
 				<label className='label'>{label}</label>
 				<div className='inputContainer'>
-					<input
-						className='input'
-						id={name}
-						name={name}
-						onChange={(e) => handleOnchange(e.target.value, name)}
-						placeholder={placeholder}
-						type={type}
-						value={value}
-						required={required}
-					/>
+					{type === 'select' ? (
+						<select
+							className='input'
+							id={name}
+							name={name}
+							placeholder={placeholder}
+							onChange={(e) => handleOnchange(e.target.value, name)}>
+							{options.map((option, i) => (
+								<option key={i} value={option}>
+									{option}
+								</option>
+							))}
+						</select>
+					) : (
+						<input
+							className='input'
+							id={name}
+							name={name}
+							onChange={(e) => handleOnchange(e.target.value, name)}
+							placeholder={placeholder}
+							type={type}
+							value={value}
+							required={required}
+						/>
+					)}
+
 					{alreadyWrite
 						? !valid && <span className='errorSpan'>{errorMessage}</span>
 						: null}

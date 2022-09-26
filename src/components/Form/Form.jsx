@@ -1,6 +1,9 @@
 import { Fragment, useState } from 'react'
 import { Input } from '../input/input'
-import { formInputs, fields, fieldsToValidate } from '../../formImputs'
+import {
+	convertToObjWithBoolean,
+	convertToObj,
+} from '../../utils/formFunctions'
 import './form.scss'
 import ReactExport from 'react-export-excel'
 import { Button } from '../button/button'
@@ -9,7 +12,16 @@ const ExcelFile = ReactExport.ExcelFile
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet
 const ExcelColumn = ReactExport.ExcelFile.ExcelColumn
 
-export const Form = () => {
+export const Form = ({
+	title,
+	formInputs,
+	excelDownload = false,
+	labelButton,
+	handleClickButton,
+}) => {
+	const fieldsToValidate = convertToObjWithBoolean(formInputs)
+	const fields = convertToObj(formInputs)
+
 	const [data, setData] = useState({ ...fields })
 	const [formValidState, setFormValidState] = useState({ ...fieldsToValidate })
 
@@ -19,7 +31,7 @@ export const Form = () => {
 	return (
 		<Fragment>
 			<form className='form'>
-				<h1 className='title'>MuniDigital form Challenge!</h1>
+				<h1 className='title'>{title}</h1>
 				{formInputs.map((formInput) => {
 					return (
 						<Input
@@ -30,6 +42,7 @@ export const Form = () => {
 							setFormValidState={setFormValidState}
 							label={formInput.label}
 							type={formInput.type}
+							options={formInput.options}
 							name={formInput.name}
 							value={data[formInput.name]}
 							placeholder={formInput.placeholder}
@@ -41,21 +54,32 @@ export const Form = () => {
 						/>
 					)
 				})}
-				<ExcelFile
-					element={<Button disabled={!enableButton}>Download Data</Button>}
-					filename='personData'>
-					<ExcelSheet data={[data]} name='personData'>
-						{formInputs.map((field) => {
-							return (
-								<ExcelColumn
-									key={field.name}
-									label={field.name}
-									value={field.name}
-								/>
-							)
-						})}
-					</ExcelSheet>
-				</ExcelFile>
+				{!excelDownload ? (
+					<Button
+						onClick={(e) =>
+							handleClickButton({ e: e, path: '../admin-panel', data: data })
+						}
+						disabled={!enableButton}>
+						{labelButton}
+					</Button>
+				) : null}
+				{excelDownload ? (
+					<ExcelFile
+						element={<Button disabled={!enableButton}>Download Data</Button>}
+						filename='personData'>
+						<ExcelSheet data={[data]} name='personData'>
+							{formInputs.map((field) => {
+								return (
+									<ExcelColumn
+										key={field.name}
+										label={field.name}
+										value={field.name}
+									/>
+								)
+							})}
+						</ExcelSheet>
+					</ExcelFile>
+				) : null}
 			</form>
 		</Fragment>
 	)

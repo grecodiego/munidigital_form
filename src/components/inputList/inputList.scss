@@ -11,5 +11,19 @@
 	border-radius: 1em;
 	font-family: 'Lato', sans-serif;
 	color: $color-white;
-	margin: 0 1em 0 1em;
+}
+
+.headerList {
+	padding: 0em 0 1em 0;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+th,
+td {
+	border: 1px solid white;
+	border: 1px solid white;
+	padding: 1em;
 }

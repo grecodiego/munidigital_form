@@ -1,0 +1,88 @@
+export const addInputs = [
+	{
+		label: 'name',
+		type: 'text',
+		name: 'name',
+		placeholder: 'Ingrese el name del input',
+		validateType: 'letters',
+		validateQuanty: 1,
+		errorMessage:
+			'El nombre debe tener al menos 1 carácteres y solo incluir letras',
+	},
+
+	{
+		label: 'type',
+		type: 'select',
+		name: 'type',
+		placeholder: '',
+		validateType: 'letters',
+		validateQuanty: 0,
+		errorMessage: 'Elija una opción.',
+		options: [
+			'Elija una opción',
+			'text',
+			'email',
+			'number',
+			'tel',
+			'color',
+			'password',
+			'date',
+		],
+	},
+	{
+		label: 'label',
+		type: 'text',
+		name: 'label',
+		placeholder: 'Ingrese el label',
+		validateType: 'any',
+		validateQuanty: 2,
+		errorMessage: 'El label debe tener al menos 2 carácteres',
+	},
+	{
+		label: 'Placeholder',
+		type: 'text',
+		name: 'placeholder',
+		placeholder: 'Ingrese el placeholder',
+		validateType: 'any',
+		validateQuanty: 2,
+		errorMessage: 'El placeholder debe tener al menos 2 carácteres',
+	},
+	{
+		label: 'Tipo de validacíon',
+		type: 'select',
+		name: 'validateType',
+		placeholder: '',
+		validateType: 'letters',
+		validateQuanty: 0,
+		errorMessage: 'Elija una opción.',
+		options: ['Elija una opción', 'letters', 'email', 'numbers', 'any'],
+	},
+	{
+		label: 'Min characters',
+		type: 'number',
+		name: 'validateQuanty',
+		placeholder: 'Ingrese la cantidad mínima de caracteres',
+		validateType: 'numbers',
+		validateQuanty: 1,
+		errorMessage: 'Ingrese un número entero ',
+	},
+	{
+		label: 'Error Message',
+		type: 'text',
+		name: 'errorMessage',
+		placeholder: 'Ingrese el mensaje de error por validación',
+		validateType: 'any',
+		validateQuanty: 2,
+		errorMessage: 'El message error debe tener al menos 2 caracteres ',
+	},
+]
+/*
+formInputs.push({
+	label: 'sexo',
+	type: 'text',
+	name: 'sex',
+	placeholder: 'Ingrese su sexo',
+	errorMessage: 'value.length >= 2',
+	pattern: 'john',
+})
+*/
