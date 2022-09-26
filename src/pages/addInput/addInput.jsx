@@ -17,7 +17,6 @@ export const AddInput = () => {
 		})
 
 		try {
-			console.log(JSON.stringify(formInputs))
 			await localStorage.setItem('formInputs', JSON.stringify(formInputs))
 			navigate('/admin-panel')
 		} catch (err) {

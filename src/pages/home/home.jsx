@@ -5,8 +5,6 @@ import { DefaultFormInputs } from '../../formImputs'
 export const Home = () => {
 	const formInputs =
 		JSON.parse(localStorage.getItem('formInputs')) || DefaultFormInputs
-
-	console.log(formInputs)
 	return (
 		<Page>
 			<Form
